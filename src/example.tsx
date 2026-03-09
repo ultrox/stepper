@@ -14,9 +14,10 @@ const STEPS = [
   { id: 10, label: "Summary" },
 ];
 
-// Minimum total gap we want between labels before switching to compact.
-// 9 gaps (between 10 steps) x 20px each = 180px.
-const GAP_BUDGET = (STEPS.length - 1) * 20;
+// Minimum acceptable space between each pair of adjacent step labels.
+// If the total available gap space drops below this budget, switch to compact.
+const MIN_GAP_PER_STEP = 20;
+const GAP_BUDGET = (STEPS.length - 1) * MIN_GAP_PER_STEP;
 
 // Once compact, we need this much EXTRA room before going back to regular.
 // Prevents rapid toggling when the width sits right at the threshold.
